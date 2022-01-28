@@ -33,11 +33,8 @@ class Game{
     player2.addImage("player2", player_img);
     players=[player1,player2];
 
-    obstacleGroup = new Group();
-    
-        console.log(frameCount)
-       
         }
+    
     play(){
         
                 form.hide();
@@ -61,10 +58,10 @@ class Game{
                        
                      if(index === player.index){
                          
-                         fill("black");
-                         textSize(25);
+                         fill("red");
+                         textSize(20);
+                         // add code to display the player name on the respective basket
                          text(allPlayers[plr].name ,x-25,y+25);
-
                          
                      }
                     
@@ -112,10 +109,6 @@ class Game{
                      }
                      fruitGroup.add(fruits);
                      
-                     
-                 }
-                 if(frameCount % 40 === 0){
-                    this.addObstacles()
                  }
                  
                   if (player.index !== null) {
@@ -125,21 +118,10 @@ class Game{
                               player.score =player.score+1;
                               player.update();
                               
-
                           }
-                  
                           
                       }
-
-                      if(obstacleGroup.isTouching(players)){
-                       // gameState = 0;
-                       // gameState = 1;
-                       // gameState = 2;
-                       // gameState = 3;
-                      }
                   }
-                }
-            
                 
 
          
@@ -147,38 +129,20 @@ class Game{
         
          
 
-    
-                showRank() {
-                    alert("Awesome !! You finished the game! You rank is :" +player.rank)
-                  }
+    }
+    showRank() {
+        alert("Awesome !! You finished the game! You rank is :" +player.rank)
+      }
 
-                  gameOver() {
-                    textSize(40)
-                    fill("white")
-                    text("GAME OVER",displayWidth/2-400,displayHeight/2-200)
-                    }
+gameOver() {
+    textSize(40)
+    fill("white")
+ text("GAME OVER",displayWidth/2-400,displayHeight/2-200)
+    }
     
     end(){
        console.log("Game Ended");
        console.log(player.rank)
        this.gameOver();
-    }
-
-
-    addObstacles()
-    {       
-            var x, y;
-            //x= 200;
-            //x = random(0, width-100);
-            //x = random(0);
-            //x = random();
-            
-            
-            y = 0
-            var obstacle = createSprite(x, y);
-            obstacle.addImage("obstacle", obstacleImage);
-            obstacle.velocityY = 4;
-            obstacle.scale = 0.15;
-            obstacleGroup.add(obstacle);
     }
 }
